@@ -1,0 +1,71 @@
+body {
+    background-color: #e1e1e1;
+    font-family: 'Source Sans Pro', sans-serif;
+
+}
+
+table {
+    float: left;
+    width: 40%;
+}
+
+table.default_table {
+    width: 25%;
+    background-color: #FFFFFF;
+    border-collapse: collapse;
+    border-width: 2px;
+    border-style: solid;
+    color: #222;
+    font-size: 15px;
+}
+
+table.default_table td, table.customTable th {
+    border-width: 2px;
+    border-color: #6b6464;
+    border-style: solid;
+    padding: 5px;
+}
+
+table.default_table thead {
+    background-color: #222;
+    color: #ffffff;
+}
+
+.error {
+    color: red;
+}
+
+.default_submit_button {
+    background-color: #222;
+    border-radius: 4px;
+    border-style: none;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.5;
+    margin: 0;
+    max-width: none;
+    min-height: 32px;
+    min-width: 8px;
+    outline: none;
+    overflow: hidden;
+    padding: 9px 20px 8px;
+    position: relative;
+    text-align: center;
+    text-transform: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.default_select, .default_input {
+    font-size: 15px;
+    background-color: #222;
+    border-radius: 7px;
+    color: white;
+    font-family: 'Source Sans Pro', sans-serif;
+}
