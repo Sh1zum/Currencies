@@ -52,8 +52,8 @@ class View
                 $exchangeForm .= '<option value=' . $currency['code'] . '>' . $currency['name'] . '</option>';
             }
             $exchangeForm .= '</select>';
-            $exchangeForm .= '<label for="source_amount">Source amount</label>';
-            $exchangeForm .= '<input type="number" name="source_amount" id="source_amount"  required="required" class="default_input"></br>';
+            $exchangeForm .= '<label for="source_amount">amount</label>';
+            $exchangeForm .= '<input type="number" name="source_amount" id="source_amount" required="required" class="default_input" step="0.01"></br>';
             $exchangeForm .= '<label for="destination_currency">Target currency:</label>';
             $exchangeForm .= '<select name="destination_currency" id="destination_currency"  required="required" class="default_select">';
             foreach ($currencies as $currency) {
