@@ -40,7 +40,9 @@ VALUES(:source_code, :destination_code, :amount, :rate, :date)');
     SELECT e.*,c.name as source_name,cr.name as destination_name FROM exchanges e 
     LEFT JOIN currencies c ON c.code = e.source_code 
     LEFT JOIN currencies cr ON cr.code=e.destination_code
-    ORDER BY `date` DESC;');
+    ORDER BY `id` DESC
+    Limit 50
+    ;');
             return $exchanges->fetchAll();
         } catch (PDOException) {
             throw new RepositoryException('There was an error in PDO statement');
