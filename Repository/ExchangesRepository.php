@@ -12,7 +12,7 @@ class ExchangesRepository
     /**
      * @throws RepositoryException
      */
-    public function insertToExchanges(string $sourceCode, string $destinationCode, float $amount, float $rate)
+    public function insertToExchanges(string $sourceCode, string $destinationCode, float $amount, float $rate): void
     {
         try {
             $query = $this->pdo->prepare('INSERT INTO exchanges (source_code, destination_code, amount, rate, date)

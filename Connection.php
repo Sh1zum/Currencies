@@ -9,10 +9,10 @@ class Connection
      */
     public function connect(): PDO
     {
-        $user = 'root';
-        $pass = '';
+        $user = '37435088_currencies';
+        $pass = 'I1LQbttD';
         try {
-            return new PDO('mysql:host=localhost;dbname=test', $user, $pass);
+            return new PDO('mysql:host=serwer2307765.home.pl;dbname=37435088_currencies', $user, $pass);
 
         } catch (PDOException $e) {
             throw new ConnectionException('There is a problem with connection to database');

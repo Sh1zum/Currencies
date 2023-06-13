@@ -34,6 +34,11 @@ class CurrenciesController
                     $currencyValidator = new CurrenciesValidator();
                     $currencyValidator->validate(array_column($currencies, 'code'), $_POST['source_currency']);
                     $currencyValidator->validate(array_column($currencies, 'code'), $_POST['destination_currency']);
+
+                    if(!is_string($_POST['source_amount'])){
+                        throw new ValidationException('Source amount must be a string');
+                    }
+
                     $exchangeCurrenciesService = new ExchangeCurrencies();
                     $sourceCurrencyValue = $currenciesRepository->getCurrencyMidByCode($_POST['source_currency']);
                     $destinationCurrencyValue = $currenciesRepository->getCurrencyMidByCode($_POST['destination_currency']);

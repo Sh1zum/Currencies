@@ -24,7 +24,7 @@ class CurrenciesRepository
     /**
      * @throws RepositoryException
      */
-    public function upsertCurrencies(array $currencies)
+    public function upsertCurrencies(array $currencies): void
     {
         try {
             $query = $this->pdo->prepare('INSERT INTO currencies (name, code, mid) VALUES(:name, :code, :mid)
