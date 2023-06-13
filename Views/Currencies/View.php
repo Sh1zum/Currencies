@@ -3,9 +3,9 @@
 class View
 {
 
-    public function viewCurrencies(array $currencies, array $exchanges, ?string $error)
+    public function viewCurrencies(array $currencies, array $exchanges, ?string $error, ?string $success)
     {
-        echo $this->viewHead() . $this->viewBody($currencies, $exchanges, $error) . $this->viewFooter();
+        echo $this->viewHead() . $this->viewBody($currencies, $exchanges, $error, $success) . $this->viewFooter();
     }
 
     protected function viewHead(): string
@@ -21,12 +21,12 @@ class View
         ';
     }
 
-    protected function viewBody(array $currencies, $exchanges, ?string $error): string
+    protected function viewBody(array $currencies, $exchanges, ?string $error, ?string $success): string
     {
         if ($error !== "") {
             return $this->errorHandling($error);
         }
-        return $this->currenciesTable($currencies) . $this->getCurrenciesForm() . $this->exchangeCurrenciesForm($currencies) . $this->exchangesTable($exchanges);
+        return $this->successHandling($success). $this->currenciesTable($currencies) . $this->getCurrenciesForm() . $this->exchangeCurrenciesForm($currencies) . $this->exchangesTable($exchanges);
     }
 
     protected function viewFooter(): string
@@ -93,18 +93,21 @@ class View
     {
         return '<div class="error">' . $error . '</div>';
     }
+    protected function successHandling($success): string
+    {
+        return '<div class="success">' . $success . '</div>';
+    }
 
-    protected function exchangesTable(array $exchanges)
+    protected function exchangesTable(array $exchanges): string
     {
         if (!empty($exchanges)) {
-
-            $exchangesTable = '<table class="default_table"><thead><tr><th>Source Code</th><th>Destination Code</th><th>Amount</th><th>Rate</th><th>Date</th></tr></thead><tbody>';
+            $exchangesTable = '<table class="default_table"><thead><tr><th>Source name</th><th>Destination name</th><th>Amount</th><th>Rate</th><th>Date</th></tr></thead><tbody>';
 
             foreach ($exchanges as $exchange) {
 
                 $exchangesTable .= '<tr>
-                <td>' . $exchange['source_code'] . '</td>
-                <td>' . $exchange['destination_code'] . '</td>
+                <td>' . $exchange['source_name'] . '</td>
+                <td>' . $exchange['destination_name'] . '</td>
                 <td>' . $exchange['amount'] . '</td>
                 <td>' . $exchange['rate'] . '</td>
                 <td>' . $exchange['date'] . '</td>

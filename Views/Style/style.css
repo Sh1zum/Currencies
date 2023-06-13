@@ -10,7 +10,7 @@ table {
 }
 
 table.default_table {
-    width: 25%;
+    width: 35%;
     background-color: #FFFFFF;
     border-collapse: collapse;
     border-width: 2px;
@@ -33,6 +33,10 @@ table.default_table thead {
 
 .error {
     color: red;
+}
+
+.success {
+    color: green;
 }
 
 .default_submit_button {

@@ -23,12 +23,14 @@ class CurrenciesController
         }
         $currenciesRepository = new CurrenciesRepository($dbConnection);
         $error = '';
+        $success = '';
         if ($_POST) {
             try {
                 if ($_POST['form'] == 'update_currencies') {
                     $NbpApi = new NBPApi();
                     $apiCurrencies = $NbpApi->handle();
                     $currenciesRepository->upsertCurrencies($apiCurrencies);
+                    $success = 'currencies have been updated';
                 } elseif ($_POST['form'] == 'exchange_currencies') {
                     $currencies = $currenciesRepository->getCurrencies();
                     $currencyValidator = new CurrenciesValidator();
@@ -41,6 +43,7 @@ class CurrenciesController
                     $exchangedCurrency = $exchangeCurrenciesService->exchange($sourceCurrencyValue, $destinationCurrencyValue, $_POST['source_amount']);
                     $exchangeRepository = new ExchangesRepository($dbConnection);
                     $exchangeRepository->insertToExchanges($_POST['source_currency'], $_POST['destination_currency'], $_POST['source_amount'], $exchangedCurrency);
+                    $success = 'The amount has been converted';
                 }
             } catch (Exception $e) {
                 $error = $e->getMessage();
@@ -63,6 +66,6 @@ class CurrenciesController
             $error = $e->getMessage();
         }
         $view = new View();
-        $view->viewCurrencies($currencies, $exchangesResults, $error);
+        $view->viewCurrencies($currencies, $exchangesResults, $error, $success);
     }
 }
